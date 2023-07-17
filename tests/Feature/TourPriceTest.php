@@ -1,5 +1,4 @@
 <?php
-
 namespace Tests\Feature;
 
 use App\Models\Tour;
@@ -8,15 +7,18 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class TourListTest extends TestCase
+class TourPriceTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_tours_return_list_of_tours_by_travel_slug(): void
+    public function test_tours_price_is_shown_correctly(): void
     {
         $travels = Travel::factory()->create();
 
-        $tour = Tour::factory()->create(['travel_id' => $travels->id]);
+        Tour::factory()->create([
+            'travel_id' => $travels->id,
+            'price' => 125.65,
+        ]);
 
         $response = $this->get('api/v1/travels/' . $travels->slug . '/tours');
 
@@ -24,6 +26,6 @@ class TourListTest extends TestCase
 
         $response->assertJsonCount(1, 'data');
 
-        $response->assertJsonFragment(['id' => $tour->id]);
+        $response->assertJsonFragment(['price' => '125.65']);
     }
 }
