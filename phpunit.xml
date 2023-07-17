@@ -21,8 +21,12 @@
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>
-        <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
-        <!-- <env name="DB_DATABASE" value=":memory:"/> -->
+        <env name="DB_CONNECTION" value="mysql"/> <!-- Set the database connection to MySQL -->
+        <env name="DB_DATABASE" value="travel-api"/>
+        <env name="DB_HOST" value="localhost"/> <!-- Set the MySQL host -->
+        <env name="DB_PORT" value="4306"/> <!-- Set the MySQL port -->
+        <env name="DB_USERNAME" value="root"/> <!-- Set your MySQL username -->
+        <env name="DB_PASSWORD" value=""/> <!-- Set your MySQL password -->
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
