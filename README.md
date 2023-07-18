@@ -7,11 +7,11 @@ Tour is a specific dates-range of a travel with its own price and details. Japan
 Goals
 
 #### the project have:
-* A private (admin) endpoint to create new users. If you want, this could also be an artisan command, as you like. It will mainly be used to generate users for this exercise;
+* A private (admin) endpoint to create new users. This is an artisan command. It will mainly be used to generate users.
 * A private (admin) endpoint to create new travels;
 * A private (admin) endpoint to create new tours for a travel;
 * A private (editor) endpoint to update a travel;
-* A public (no auth) endpoint to get a list of paginated travels. It must return only public travels;
+* A public (no auth) endpoint to get a list of paginated travels. It returns only public travels;
 * A public (no auth) endpoint to get a list of paginated tours by the travel slug (e.g. all the tours of the travel foo-bar). Users can filter (search) the results by priceFrom, priceTo, dateFrom (from that startingDate) and dateTo (until that startingDate). User can sort the list by price asc and desc. They will always be sorted, after every additional user-provided filter, by startingDate asc.
 
 ### Models
@@ -44,10 +44,10 @@ Goals
 * Price (integer, see below)
 
 #### Notes
-* We use UUIDs as primary keys instead of incremental IDs, but it's not required for you to use them, although highly appreciated;
+* I use UUIDs as primary keys instead of incremental IDs.
 * Tours prices are integer multiplied by 100: for example, €999 euro will be 99900, but, when returned to Frontends, they will be formatted (99900 / 100);
 * Tours names inside the samples are a kind-of what we use internally, but you can use whatever you want;
 * Every admin user will also have the editor role;
 * Every creation endpoint, of course, should create one and only one resource. You can't, for example, send an array of resource to create;
 * There are Feature tests.
-* There is Docs!!.
+* There is Docs.
