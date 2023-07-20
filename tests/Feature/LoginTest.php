@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
@@ -17,7 +16,7 @@ class LoginTest extends TestCase
 
         $response = $this->postJson('api/v1/login', [
             'email' => $user->email,
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response->assertStatus(200);
@@ -27,8 +26,8 @@ class LoginTest extends TestCase
     public function test_login_returns_error_with_invalid_credentials()
     {
         $response = $this->post('api/v1/login', [
-           'email' => 'test@dummy.c',
-           'password' => 'password'
+            'email' => 'test@dummy.c',
+            'password' => 'password',
         ]);
 
         $response->assertStatus(422);

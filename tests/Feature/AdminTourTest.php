@@ -1,17 +1,16 @@
 <?php
 
-
 use App\Models\Role;
 use App\Models\Travel;
 use App\Models\User;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminTourTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * A basic feature test example.
      */
@@ -19,7 +18,7 @@ class AdminTourTest extends TestCase
     {
         $travel = Travel::factory()->create();
 
-        $response = $this->postJson('api/v1/admin/travels/' . $travel->id . '/tours');
+        $response = $this->postJson('api/v1/admin/travels/'.$travel->id.'/tours');
 
         $response->assertStatus(401); //not authenticated
     }
@@ -34,7 +33,7 @@ class AdminTourTest extends TestCase
 
         $travel = Travel::factory()->create();
 
-        $response = $this->actingAs($user)->postJson('api/v1/admin/travels/' . $travel->id . '/tours');
+        $response = $this->actingAs($user)->postJson('api/v1/admin/travels/'.$travel->id.'/tours');
 
         $response->assertStatus(403); //not authorized
     }
@@ -49,17 +48,17 @@ class AdminTourTest extends TestCase
 
         $travel = Travel::factory()->create();
 
-        $response = $this->actingAs($user)->postJson('api/v1/admin/travels/'. $travel->id . '/tours', [
+        $response = $this->actingAs($user)->postJson('api/v1/admin/travels/'.$travel->id.'/tours', [
             'name' => 'X5 Amazing Tour.',
         ]);
 
         $response->assertStatus(422);
 
-        $response = $this->actingAs($user)->postJson('api/v1/admin/travels/'. $travel->id . '/tours', [
+        $response = $this->actingAs($user)->postJson('api/v1/admin/travels/'.$travel->id.'/tours', [
             'name' => 'X5 Amazing Tour.',
             'starting_date' => '2023/07/11',
             'ending_date' => '2023/07/18',
-            'price' => 2100
+            'price' => 2100,
         ]);
 
         $response->assertStatus(201);

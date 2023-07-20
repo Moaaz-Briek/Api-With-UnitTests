@@ -38,25 +38,27 @@ class CreateUserCommand extends Command
         $roleName = $this->choice('Name of the user', ['admin', 'editor'], 1);
         $role = Role::where('name', $roleName)->first();
 
-        if (!$role) {
+        if (! $role) {
             $this->error('Role not found');
+
             return -1;
         }
 
         $validator = Validator::make($user, [
-           'name' => ['required', 'string', 'max:255'],
-           'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-           'password' => ['required', Password::defaults()]
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', Password::defaults()],
         ]);
 
         if ($validator->fails()) {
             foreach ($validator->errors()->all() as $error) {
                 $this->error($error);
             }
+
             return -1;
         }
 
-        DB::transaction(function () use ($user, $role){
+        DB::transaction(function () use ($user, $role) {
             $user['password'] = Hash::make($user['password']);
             $newUser = User::create($user);
             $newUser->roles()->attach($role->id);

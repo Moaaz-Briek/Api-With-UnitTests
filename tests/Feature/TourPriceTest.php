@@ -1,10 +1,10 @@
 <?php
+
 namespace Tests\Feature;
 
 use App\Models\Tour;
 use App\Models\Travel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TourPriceTest extends TestCase
@@ -20,7 +20,7 @@ class TourPriceTest extends TestCase
             'price' => 125.65,
         ]);
 
-        $response = $this->get('api/v1/travels/' . $travels->slug . '/tours');
+        $response = $this->get('api/v1/travels/'.$travels->slug.'/tours');
 
         $response->assertStatus(200);
 

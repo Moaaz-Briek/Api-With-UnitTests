@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Models\Tour;
 use App\Models\Travel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TourSortingTest extends TestCase
@@ -28,7 +27,7 @@ class TourSortingTest extends TestCase
             'ending_date' => now()->addDays(2),
         ]);
 
-        $response = $this->get('api/v1/travels/' . $travels->slug . '/tours');
+        $response = $this->get('api/v1/travels/'.$travels->slug.'/tours');
 
         $response->assertStatus(200);
 
@@ -61,7 +60,7 @@ class TourSortingTest extends TestCase
             'price' => 100,
         ]);
 
-        $response = $this->get('api/v1/travels/' . $travels->slug . '/tours?sortBy=price&sortOrder=asc');
+        $response = $this->get('api/v1/travels/'.$travels->slug.'/tours?sortBy=price&sortOrder=asc');
 
         $response->assertStatus(200);
 
