@@ -47,8 +47,7 @@ Goals
 #### Notes
 * I use UUIDs as primary keys instead of incremental IDs.
 * Tours prices are integer multiplied by 100: for example, €999 euro will be 99900, but, when returned to Frontends, they will be formatted (99900 / 100);
-* Tours names inside the samples are a kind-of what we use internally, but you can use whatever you want;
 * Every admin user will also have the editor role;
-* Every creation endpoint, of course, should create one and only one resource. You can't, for example, send an array of resource to create;
+* Every creation endpoint, of course, should create one and only one resource. We can't, for example, send an array of resource to create;
 * There are Feature tests.
 * We apply laravel pint and laracast to fix code styles and analyse possible bugs. 
