@@ -7,7 +7,7 @@ is the main unit of the project: it contains all the necessary information, like
 Tour is a specific dates-range of a travel with its own price and details. Japan: road to Wonder may have a tour from 10 to 27 May at €1899, another one from 10 to 15 September at €669 etc. At the end, you will book a tour, not a travel.
 Goals
 
-#### the project have:
+#### the project has:
 * A private (admin) endpoint to create new users. This is an artisan command. It will mainly be used to generate users.
 * A private (admin) endpoint to create new travels;
 * A private (admin) endpoint to create new tours for a travel;
